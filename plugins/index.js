@@ -5,7 +5,6 @@ const fastifySession = require("@fastify/session");
 const MongoStore = require("connect-mongo");
 
 module.exports = fp(async function (app, opts) {
-    console.log(opts)
 
     app.register(fastifyCookie)
     app.register(fastifySession, {
@@ -32,8 +31,5 @@ module.exports = fp(async function (app, opts) {
         },
         root: path.resolve(process.cwd(), "views"),
     });
-
-    app.setNotFoundHandler(function (req, res) {
-        return res.view("404.ejs")
-    })
+    
 });

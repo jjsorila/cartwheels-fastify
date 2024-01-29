@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container{
+    max-width: 1600px;
+    height: 100vh;
+    margin: 0 auto;
+    background: #ebe9e9;
+
+}
+
+body{
+    background: #ebe9e9;
+}
+
+.container1{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    background: #ebe9e9;
+    padding: 1rem;
+}
+
+.section1{
+    height: 100%;
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.section2{
+    height: 100%;
+    width: 35%;
+    position: relative;
+
+}
+
+.location{
+    height: 50%;
+    position: relative;
+    border-radius: 15px;
+    background: #f4eeda;
+    border: 1px solid orange;
+}
+
+.locs-info{
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+   
+}
+.home-container{
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.locs-info h3 i{
+    color: red;
+    font-size: 25px;
+    padding-right:.5rem ;
+}
+.locs-info h1{
+    font-size: 40px;
+}
+
+.locs-info p{
+    margin-top: 1rem;
+    color: #666;
+}
+
+.locs-info h3{
+    color: rgb(103, 100, 100);
+    font-size: 15px;
+}
+.map-container{
+    height: 100%;
+    background: #fff;
+    border-radius: 15px;
+    padding: 1rem;
+}
+
+.product{
+    height: 50%;
+    width: 100%;
+}
+.food{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 1rem;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
+    background: #fff;
+    border-radius: 15px;
+    
+}
+.card-container{
+    width: 900px;
+    display: flex;
+    overflow-x: scroll;
+    gap: 1rem;
+}
+.food h3{
+   position: absolute;
+   top: 20px;
+   left: 20px;
+   color: rgb(113, 99, 186, 255)
+}
+.food-card{
+    height: 200px;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+   
+}
+
+.circle-container{
+    height: 70%;
+    padding: .5rem;
+}
+
+.circle{
+    height: 100%;
+    width: 100%;
+    border-radius: 40%;
+    overflow: hidden;
+}
+
+.circle img{
+    height: 100%;
+    width: 100%;
+}
+
+.food-name{
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.light-red{
+    background: rgb(251, 233, 233);
+}
+.light-purple{
+    background: rgb(254, 226, 254);
+}
+.light-green{
+    background: rgb(235, 254, 235);
+}
+.light-blue{
+    background: rgb(236, 226, 254);
+}
+
+.cssbuttons-io-button {
+    background: #a370f0;
+    color: white;
+    font-family: inherit;
+    padding: 0.35em;
+    padding-left: 1.2em;
+    font-size: 17px;
+    font-weight: 500;
+    border-radius: 0.9em;
+    border: none;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    box-shadow: inset 0 0 1.6em -0.6em #714da6;
+    overflow: hidden;
+    position: relative;
+    height: 2.8em;
+    padding-right: 3.3em;
+    cursor: pointer;
+  }
+  
+  .cssbuttons-io-button .icon {
+    background: white;
+    margin-left: 1em;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.2em;
+    width: 2.2em;
+    border-radius: 0.7em;
+    box-shadow: 0.1em 0.1em 0.6em 0.2em #7b52b9;
+    right: 0.3em;
+    transition: all 0.3s;
+  }
+  
+  .cssbuttons-io-button:hover .icon {
+    width: calc(100% - 0.6em);
+  }
+  
+  .cssbuttons-io-button .icon svg {
+    width: 1.1em;
+    transition: transform 0.3s;
+    color: #7b52b9;
+  }
+  
+  .cssbuttons-io-button:hover .icon svg {
+    transform: translateX(0.1em);
+  }
+  
+  .cssbuttons-io-button:active .icon {
+    transform: scale(0.95);
+  }
+  
+
+
+
+@media screen and (max-width: 916px) {
+    .container{
+        height: max-content;
+    }
+    .container1{
+        display: flex;
+        flex-direction: column;
+    }
+    .section1{
+        width: 100%;
+        height: min-content;
+    }
+    .section2{
+        width: 100%;
+        height: 300px;
+        
+    }
+    .location{
+        height: 250px;
+    }
+    .food{
+        max-height: 700px;
+        flex-wrap: wrap;
+        height: max-content;
+    }
+    .card-container{
+        flex-direction: column;
+        max-height:650px ;
+        overflow: scroll;
+    }
+    .food h3{
+        display: none;
+    }
+    .food-card{
+        display: flex;
+        flex-direction: row;
+        min-height: 150px;
+        width: 100%;
+    }
+    .circle-container{
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .circle{
+        height: 90%;
+    }
+    .food-name{
+        height: 100%;
+        width: 100%;
+    }
+    .location h1,p{
+        font-size: 12px;
+    }
+    
+}
