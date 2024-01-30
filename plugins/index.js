@@ -16,8 +16,8 @@ module.exports = fp(async function (app, opts) {
         },
         store: MongoStore.create({
             mongoUrl: "mongodb://localhost:27017",
-            dbName: "sessions",
-            collectionName: "logins"
+            dbName: "cartwheels",
+            collectionName: "sessions"
         })
     })
     
