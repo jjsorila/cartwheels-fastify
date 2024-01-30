@@ -1,21 +1,20 @@
-const app = require("fastify")({ logger: true });
+const app = require("fastify")({ logger: true, disableRequestLogging: true });
 const connectDb = require("./config/db");
 const AutoLoad = require("@fastify/autoload")
 const path = require("path")
+require("dotenv").config({ path: path.resolve(process.cwd(),".env") })
 
-//GLOBAL MIDDLEWARES
+//GLOBAL PLUGINS
 app.register(AutoLoad, {
   dir: path.join(process.cwd(), "plugins"),
-  opts: {}
 });
 
 //ROUTES
 app.register(AutoLoad, {
   dir: path.join(process.cwd(), "routes"),
-  opts: {}
 });
 
-app.setNotFoundHandler(function (request, reply) {
+app.setNotFoundHandler(async(request, reply) => {
   return reply.view("404.ejs")
 })
 
@@ -28,5 +27,4 @@ const start = async () => {
     process.exit(1);
   }
 };
-
 start();

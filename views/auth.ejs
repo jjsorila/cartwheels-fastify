@@ -10,19 +10,19 @@
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="#" class="sign-in-form">
+          <form id="signin-form" class="sign-in-form" novalidate>
             <h2 class="title">Sign in</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Email" />
+              <input type="text" id="log-email" placeholder="Email" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input type="password" id="log-password" placeholder="Password" />
             </div>
-            <input type="submit" value="Forgot Password?" class="btn-forgot">
-            <input type="submit" value="Login" class="btn solid" />
-            <p class="social-text">Or Sign in with social platforms</p>
+            <input type="submit" value="Forgot Password?" id="forgot-btn" class="btn-forgot">
+            <input type="submit" value="Login" id="login-btn" class="btn solid" />
+            <!-- <p class="social-text">Or Sign in with social platforms</p>
             <div class="social-media">
               <a href="#" class="social-icon">
                 <i class="fab fa-facebook-f"></i>
@@ -36,28 +36,28 @@
               <a href="#" class="social-icon">
                 <i class="fab fa-linkedin-in"></i>
               </a>
-            </div>
+            </div> -->
           </form>
-          <form action="#" class="sign-up-form">
+          <form id="signup-form" class="sign-up-form" novalidate>
             <h2 class="title">Sign up</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Fullname" />
+              <input type="text" id="reg-fullname" placeholder="Fullname" />
             </div>
             <div class="input-field">
                 <i class="fas fa-briefcase"></i>
-                <input type="text" placeholder="Business Name" />
+                <input type="text" id="reg-businessName" placeholder="Business Name" />
               </div>
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" />
+              <input type="email" id="reg-email" placeholder="Email" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input type="password" id="reg-password" placeholder="Password" />
             </div>
-            <input type="submit" class="btn" value="Sign up" />
-            <p class="social-text">Or Sign up with social platforms</p>
+            <input type="submit" class="btn" id="register-btn" value="Sign up" />
+            <!-- <p class="social-text">Or Sign up with social platforms</p>
             <div class="social-media">
               <a href="#" class="social-icon">
                 <i class="fab fa-facebook-f"></i>
@@ -71,7 +71,7 @@
               <a href="#" class="social-icon">
                 <i class="fab fa-linkedin-in"></i>
               </a>
-            </div>
+            </div> -->
           </form>
         </div>
       </div>

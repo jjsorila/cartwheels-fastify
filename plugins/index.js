@@ -11,12 +11,13 @@ module.exports = fp(async function (app, opts) {
         saveUninitialized: false,
         secret: "B6E6D2UvM5TKlLCHBZF6HGJ19RpPcw13",
         cookie: {
-            maxAge: 20000,
+            maxAge: 1000 * 60 * 60 * 24,
             secure: "auto"
         },
         store: MongoStore.create({
             mongoUrl: "mongodb://localhost:27017",
-            dbName: "loggedIn"
+            dbName: "sessions",
+            collectionName: "logins"
         })
     })
     
@@ -31,5 +32,13 @@ module.exports = fp(async function (app, opts) {
         },
         root: path.resolve(process.cwd(), "views"),
     });
+
+    app.addHook("preHandler", async(request, reply) => {
+        reply.headers({
+            "Cache-Control": "no-cache, no-store, must-revalidate",
+            "Pragma": "no-cache",
+            "Expires": "0"
+        })
+    })
     
 });
