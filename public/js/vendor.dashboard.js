@@ -10,7 +10,7 @@ $(function (e) {
         url: "/api/vendor/logout",
         success: function (data) {
             if (data.operation) {
-            location.reload(1);
+            location.reload(true);
             } else {
             Swal.fire(data.msg, "", "error");
             }

@@ -137,7 +137,7 @@ $(function (e) {
         success: function (data) {
           if (data.operation) {
             clearInput()
-            location.reload(1)
+            location.reload(true)
           }else{
             Swal.fire(data.msg, "", "error");
           }

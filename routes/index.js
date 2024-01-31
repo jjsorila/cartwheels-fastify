@@ -1,6 +1,6 @@
 module.exports = async(app, opts) => {
     //REDIRECT LOGGED IN VENDORS
-    const preHandler = async(request, reply) => {
+    const onRequest = async(request, reply) => {
         if(request.session?.user) return reply.redirect("/vendor/dashboard")
     }
 
@@ -12,7 +12,7 @@ module.exports = async(app, opts) => {
         return reply.view("foodInfo.ejs")
     })
 
-    app.get("/auth", { preHandler } , async(request, reply) => {
+    app.get("/auth", { onRequest } , async(request, reply) => {
         return reply.view("auth.ejs")
     })
 
