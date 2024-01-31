@@ -2,9 +2,10 @@ const path = require("path");
 const fp = require("fastify-plugin");
 const fastifyCookie = require("@fastify/cookie");
 const fastifySession = require("@fastify/session");
+const jwt = require("@fastify/jwt")
 const MongoStore = require("connect-mongo");
 
-module.exports = fp(async function (app, opts) {
+module.exports = fp(async function (app, options) {
 
     app.register(fastifyCookie)
     app.register(fastifySession, {
@@ -19,6 +20,14 @@ module.exports = fp(async function (app, opts) {
             dbName: "cartwheels",
             collectionName: "sessions"
         })
+    })
+
+    app.register(jwt, {
+        secret: "B6E6D2UvM5TKlLCHBZF6HGJ19RpPcw13",
+        sign: {
+            algorithm: "HS256",
+            expiresIn: "24h"
+        }
     })
     
     app.register(require("@fastify/static"), {

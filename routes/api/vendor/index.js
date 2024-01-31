@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs")
 const VendorModel = require("../../../models/vendors")
+const SendMail = require("../../../config/mail")
 
 module.exports = async(app, opts) => {
     //REGISTER VENDOR
@@ -26,7 +27,7 @@ module.exports = async(app, opts) => {
             return { operation: true }
         } catch (error) {
             console.log(error)
-            return reply.code(500).send("Server Error")
+            return reply.code(500).send({ operation: false, msg: "Server Error" })
         }
     })
 
@@ -50,7 +51,7 @@ module.exports = async(app, opts) => {
 
         } catch (error) {
             console.log(error)
-            return reply.code(500).send("Server Error")
+            return reply.code(500).send({ operation: false, msg: "Server Error" })
         }
     })
 
@@ -62,7 +63,41 @@ module.exports = async(app, opts) => {
             return { operation: true }
         } catch (error) {
             console.log(error)
-            return reply.code(500).send("Server Error")
+            return reply.code(500).send({ operation: false, msg: "Server Error" })
+        }
+    })
+
+    app.patch("/reset", async(request, reply) => {
+        try {
+            const { email, password } = request.body
+
+            const hashedPassword = await bcrypt.hash(password, 10)
+
+            await VendorModel.findOneAndUpdate({ email }, { $set: { password: hashedPassword } }).exec()
+
+            return { operation: true }
+        } catch (error) {
+            console.log(error)
+            return reply.code(500).send({ operation: false, msg: "Server Error" })
+        }
+    })
+
+    app.post("/sendreset", async(request, reply) => {
+        try {
+            const { email } = request.body
+
+            const vendor = await VendorModel.findOne({ email }).exec()
+
+            if(!vendor) return { operation: false, msg: "Email not found" }
+
+            const token = app.jwt.sign({ email })
+
+            await SendMail(email, token, request)
+
+            return { operation: true, msg: "Reset password link sent to email" }
+        } catch (error) {
+            console.log(error)
+            return reply.code(500).send({ operation: false, msg: "Server Error" })
         }
     })
 }

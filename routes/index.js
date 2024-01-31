@@ -16,7 +16,24 @@ module.exports = async(app, opts) => {
         return reply.view("auth.ejs")
     })
 
-    app.get("/forgotpassword", async(request, reply) => {
-        return reply.view("forgot.ejs")
+    app.get("/forgotpassword", { 
+        onRequest: async(request, reply) => {
+            try {
+                const { token } = request.query
+
+                if(!token) return reply.redirect("/auth")
+
+                app.jwt.verify(token, (err, decoded) => {
+                    if(err) throw err
+                    request.decoded = decoded
+                })
+            } catch (error) {
+                request.log.error(error.code)
+                return reply.redirect("/auth")
+            }
+        }
+    }, async(request, reply) => {
+        const { email } = request.decoded
+        return reply.view("forgot.ejs", { email })
     })
 }

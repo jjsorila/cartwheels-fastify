@@ -18,6 +18,47 @@ $(function (e) {
       logPassword.val("");
     }
 
+    //FORGOT PASSWORD
+    $("#forgot-btn").click(function(e) {
+      Swal.fire({
+        title: "Email",
+        input: "text",
+        inputAttributes: {
+          autocapitalize: "off"
+        },
+        showCancelButton: true,
+        cancelButtonText: "Close",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Look up",
+        confirmButtonColor: "#7A7AD4",
+        showLoaderOnConfirm: true,
+        preConfirm: async (email) => {
+          try {
+            const data = await fetch("/api/vendor/sendreset", {
+                method: "POST",
+                headers: { 
+                  "Content-Type": "application/json" 
+                },
+                body: JSON.stringify({
+                  email
+                })
+            }).then(res => res.json())
+              
+            if(data.operation) return data
+            throw data.msg
+            
+          } catch (error) {
+            Swal.showValidationMessage(error);
+          }
+        },
+        allowOutsideClick: () => !Swal.isLoading()
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(result.value.msg, "", "success");
+        }
+      });
+    })
+
     sign_up_btn.addEventListener("click", () => {
       container.classList.add("sign-up-mode");
     });

@@ -2,7 +2,7 @@ const app = require("fastify")({ logger: {
   transport: {
     target: 'pino-pretty',
     options: {
-      translateTime: 'HH:MM:ss Z',
+      translateTime: 'HH:MM:ss tt',
       ignore: 'pid,hostname',
     }
   }
@@ -14,14 +14,15 @@ require("dotenv").config({ path: path.resolve(process.cwd(),".env") })
 
 //GLOBAL PLUGINS
 app.register(AutoLoad, {
-  dir: path.join(process.cwd(), "plugins"),
+  dir: path.join(process.cwd(), "plugins")
 });
 
 //ROUTES
 app.register(AutoLoad, {
-  dir: path.join(process.cwd(), "routes"),
+  dir: path.join(process.cwd(), "routes")
 });
 
+//404 NOT FOUND PAGE
 app.setNotFoundHandler(async(request, reply) => {
   return reply.view("404.ejs")
 })

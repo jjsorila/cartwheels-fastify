@@ -14,13 +14,14 @@
         </div>
         <div class="input-container">
            <div class="title">
-                <h3>Forgot Password?</h3>
+                <h3>Forgot Password</h3>
                 <p>Kindly enter your new password in the provided input field.</p>
            </div>
            <div class="keke"> 
                 <div class="input-content">
-                    <input type="password" id="password" placeholder="Password">
-                    <input type="password" id="confirmPass" placeholder="Confirm Password">
+                    <input type="hidden" id="email" value="<%= email %>">
+                    <input type="password" id="pwd" placeholder="Password">
+                    <input type="password" id="confirmPwd" placeholder="Confirm Password">
                 </div>
                 <div class="button-container">
                     <button id="submit">Submit</button>
@@ -29,5 +30,7 @@
         </div>
        </form>
     </div>
+
+    <script type="text/javascript" src="/public/js/forgot.js"></script>
 </body>
 </html>
