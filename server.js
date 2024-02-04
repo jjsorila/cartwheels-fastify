@@ -1,12 +1,15 @@
-const app = require("fastify")({ logger: {
-  transport: {
-    target: 'pino-pretty',
-    options: {
-      translateTime: 'HH:MM:ss tt',
-      ignore: 'pid,hostname',
+const app = require("fastify")({ 
+  logger: {
+    transport: {
+      target: 'pino-pretty',
+      options: {
+        translateTime: 'HH:MM:ss tt',
+        ignore: 'pid,hostname',
+      }
     }
-  }
-}, disableRequestLogging: true });
+  }, 
+  disableRequestLogging: true 
+});
 const connectDb = require("./config/db");
 const AutoLoad = require("@fastify/autoload")
 const path = require("path")
