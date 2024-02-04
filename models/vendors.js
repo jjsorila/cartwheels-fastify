@@ -7,6 +7,7 @@ const VendorSchema = new Schema({
     businessImage: String,
     businessName: String,
     password: String,
+    foodCategories: [String],
     location: {
         latitude: Number,
         longitude: Number,
