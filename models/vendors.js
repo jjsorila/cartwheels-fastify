@@ -4,7 +4,10 @@ const { Schema } = mongoose
 const VendorSchema = new Schema({
     fullname: String,
     email: String,
-    businessImage: String,
+    businessImage: {
+        type: String,
+        default: "/public/img/default_image.png"
+    },
     businessName: String,
     password: String,
     location: {

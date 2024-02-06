@@ -1,8 +1,27 @@
 const bcrypt = require("bcryptjs")
+const path = require("path")
 const VendorModel = require("../../../models/vendors")
 const SendMail = require("../../../config/mail")
+const { v4 } = require("uuid")
+const multer = require('fastify-multer')
+const fs = require("fs/promises")
+let uploadedFileName = null
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, path.resolve(process.cwd(),"public","img"))
+    },
+    filename: function (req, file, cb) {
+        uploadedFileName = `${v4()}.jpg`
+        cb(null, uploadedFileName)
+    }
+  })
+const upload = multer({ storage })
 
 module.exports = async(app, opts) => {
+    app.register(multer.contentParser)
+
+    app.addHook("preHandler", upload.single("img"))
+
     //REGISTER VENDOR
     app.post("/register", async(request, reply) => {
         try {
@@ -36,16 +55,13 @@ module.exports = async(app, opts) => {
         try {
             let { email, password } = request.body
             
-            const vendor = await VendorModel.findOne({ email }).exec()
+            const vendor = await VendorModel.findOne({ email }).select("-products").exec()
             if(!vendor) return { operation: false, msg: "Invalid credentials" }
 
             const checkPassword = await bcrypt.compare(password, vendor.password)
             if(!checkPassword) return { operation: false, msg: "Invalid credentials" }
 
-            request.session.user = {
-                id: vendor._id,
-                email: vendor.email,
-            }
+            request.session.user = vendor
 
             return { operation: true }
 
@@ -67,6 +83,7 @@ module.exports = async(app, opts) => {
         }
     })
 
+    //RESET VENDOR PASSWORD
     app.patch("/reset", async(request, reply) => {
         try {
             const { email, password } = request.body
@@ -82,6 +99,7 @@ module.exports = async(app, opts) => {
         }
     })
 
+    //SEND RESET PASSWORD TOKEN
     app.post("/sendreset", async(request, reply) => {
         try {
             const { email } = request.body
@@ -98,6 +116,73 @@ module.exports = async(app, opts) => {
         } catch (error) {
             console.log(error)
             return reply.code(500).send({ operation: false, msg: "Server Error" })
+        }
+    })
+
+    //UPDATE MAP,BUSINESS,VENDOR
+    app.post("/update", async(req, res) => {
+        try {
+            let { action, _id } = req.body
+
+            switch(action){
+                case "map":
+                    let { locationName, lat, lng } = req.body
+
+                    await VendorModel.findByIdAndUpdate(_id, { $set: {
+                            location: {
+                                name: locationName,
+                                latitude: lat,
+                                longitude: lng
+                            }
+                        } 
+                    }).exec()
+
+                    return { operation: true, msg: "Location Updated!" }
+                case "business":
+                    let { businessName, description } = req.body
+
+                    const newBusinessInfo = {
+                        businessName,
+                        description
+                    }
+
+                    if(req.file){
+                        const vendor = await VendorModel.findById(_id).exec()
+
+                        await fs.unlink(`${process.cwd()}/${vendor.businessImage}`)
+
+                        newBusinessInfo.businessImage = `/public/img/${uploadedFileName}`
+                        uploadedFileName = null
+                    }
+
+                    await VendorModel.findByIdAndUpdate(_id,{
+                        $set: newBusinessInfo
+                    })
+
+                    return { operation: true, msg: "Business Information Updated!" }
+                case "vendor":
+                    let { fullname, email, password } = req.body
+
+                    const newVendorInfo = {
+                        fullname,
+                        email
+                    }
+
+                    if(password){
+                        password = await bcrypt.hash(password, 10)
+                        newVendorInfo.password = password
+                    }
+
+                    await VendorModel.findByIdAndUpdate(_id, {
+                        $set: newVendorInfo
+                    })
+
+                    return { operation: true, msg: "Vendor Information Updated!" }
+            }
+
+        } catch (error) {
+            console.log(error)
+            return res.code(500).send({ operation: false, msg: "Server Error" })
         }
     })
 }

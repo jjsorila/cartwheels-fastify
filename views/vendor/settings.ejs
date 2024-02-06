@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/public/css/vendor.settings.css" />
 </head>
 <body>
+  <input type="hidden" id="_id" value="<%= user._id %>" />
     <div class="container">
         <nav class="sidebar close">
           <header>
@@ -132,9 +133,9 @@
               <div class="bars-container">
                 <i class="fa-solid fa-bars" id="bars"></i>
               </div>
-              <div class="vendors-name">Vendors Name</div>
+              <div class="vendors-name"><%= user.businessName %></div>
               <div class="business-logo">
-                <img src="/public/img/default_image.png" alt="" />
+                <img src="<%= user.businessImage %>" alt="" />
               </div>
             </div>
   
@@ -142,27 +143,17 @@
   
             <div class="container2">
               <div class="map-section">
-                <div class="map-position">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.543623478162!2d121.37456157480499!3d13.746057897426992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd3b297ee40e2f%3A0x99d35b4762a59927!2sSan%20Juan%20Batangas!5e0!3m2!1sen!2sph!4v1707031808771!5m2!1sen!2sph"
-                    width="100%"
-                    height="100%"
-                    style="border: 0"
-                    allowfullscreen=""
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
-                  ></iframe>
-                </div>
+                <div class="map-position" id="map"></div>
                 <div class="location-section">
                   <div class="location-position">
                     <h2>
-                      <i class="fa-solid fa-location-dot"></i>Poctol San Juan
-                      Batangas
+                      <i class="fa-solid fa-location-dot"></i>
+                      <p id="locationName" >Loading...</p>
                     </h2>
                   </div>
                   <div class="button-section">
-                    <button class="button-getLocation">
-                      <span class="button-content">Get Location</span>
+                    <button class="button-getLocation" id="update-location" disabled>
+                      <span class="button-content" >Update Location</span>
                     </button>
                   </div>
                 </div>
@@ -181,20 +172,21 @@
                     </p>
                   </div>
                   <div class="logo-pic">
-                    <img src="/public/img/default_image.png" alt="" />
+                    <img id="imageHolder" src="<%= user.businessImage %>" alt="" />
+                    <input type="file"  style="display: none;" id="fileInput" />
                   </div>
                   <div class="busin-info-container">
-                    <input type="text" placeholder="Enter your Business Name" />
+                    <input type="text" value="<%= user.businessName %>" id="businessName" placeholder="Enter your Business Name" />
                     <textarea
                       name=""
-                      id=""
+                      id="description"
                       cols="30"
                       rows="10"
                       placeholder="Enter Business Description"
-                    ></textarea>
+                    ><%= user.description %></textarea>
                   </div>
                   <div class="butt-container">
-                    <button class="button-getLocation">
+                    <button class="button-getLocation" id="update-business">
                       <span class="button-content">Update</span>
                     </button>
                   </div>
@@ -209,20 +201,12 @@
                   <div class="super-card">
                     <div class="wrapper">
                       <div class="food-image">
-                        <img src="/public/img/food1.jpg" alt="" />
+                        <img src="<%= user.businessImage %>" id="p-img" alt="" />
                       </div>
                       <div class="descripts">
-                        <h4 id="title">Jonathan</h4>
-                        <p class="line-clamp">
-                          Short Description about your business Lorem ipsum dolor
-                          sit amett.Short Description about your business Lorem ipsum dolor
-                          sit amett.
-                          Short Description about your business Lorem ipsum dolor
-                          sit amett.
-                          Short Description about your business Lorem ipsum dolor
-                          sit amett.
-                          Short Description about your business Lorem ipsum dolor
-                          sit amett.
+                        <h4 id="title"><%= user.businessName %></h4>
+                        <p class="line-clamp" id="p-desc">
+                          <%= user.description %>
                         </p>
                         <div class="buttons-container">
                           <button class="btns">View</button>
@@ -241,9 +225,7 @@
                 </div> -->
                 <section class="main-content">
                   <form
-                    action="#"
-                    method="post"
-                    class="form"
+                    class="form vendor-info"
                     id="registration-form"
                   >
                     <div class="paragraph">
@@ -266,6 +248,7 @@
                         type="text"
                         id="fullname"
                         name="fullname"
+                        value="<%= user.fullname %>"
                         placeholder="Full Name"
                       />
                     </div>
@@ -274,13 +257,14 @@
                         type="email"
                         id="email"
                         name="email"
+                        value="<%= user.email %>"
                         placeholder="Email"
                       />
                       <input
                         type="password"
                         id="password"
                         name="password"
-                        placeholder="Password"
+                        placeholder="New Password"
                       />
                     </div>
                     <div class="form-group">
@@ -288,7 +272,7 @@
                     </div>
   
                     <div class="buttons">
-                      <button type="submit" id="submit" class="btn">
+                      <button type="submit" id="submit" class="btn update-vendor">
                         Update<i class="fa-solid fa-greater-than"></i>
                       </button>
                     </div>
@@ -303,6 +287,7 @@
           </section>
         </div>
       </div>
+      <script type="text/javascript" src="/public/gmaps.api.js"></script>
       <script type="text/javascript" src="/public/js/vendor.settings.js"></script>
 </body>
 </html>

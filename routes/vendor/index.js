@@ -1,3 +1,5 @@
+const VendorModel = require("../../models/vendors")
+
 module.exports = async(app, opts) => {
     ////REDIRECT LOGGED OUT VENDORS
     const onRequest = async(request, reply) => {
@@ -11,6 +13,7 @@ module.exports = async(app, opts) => {
     })
 
     app.get("/settings", async(request, reply) => {
-        return reply.view("vendor/settings.ejs")
+        const vendor = await VendorModel.findById(request.session.user._id).exec()
+        return reply.view("vendor/settings.ejs", { user: vendor })
     })
 }

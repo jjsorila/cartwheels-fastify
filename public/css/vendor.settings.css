@@ -426,11 +426,23 @@ body.dark .switch::before {
   padding-right: 0.5rem;
 }
 
+.location-position h2 {
+  display: flex;
+}
+
+#locationName {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
 .location-position {
   width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 20px;
   background: var(--primary-color-light);
 }
 
