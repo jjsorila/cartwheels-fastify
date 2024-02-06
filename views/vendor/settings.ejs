@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include("../template/header.ejs") %>
+    <link rel="stylesheet" href="/public/css/vendor.settings.css" />
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar close">
+          <header>
+            <div class="image-text">
+              <span class="image">
+                <img src="/public/favicon.ico" alt="" />
+              </span>
+  
+              <div class="text header-text">
+                <span class="name">CartWheels</span>
+                <!-- <span class="xxx"><i class="fa-solid fa-x" id="xxx"></i></span> -->
+                <!-- <span class="profession">business Name</span> -->
+              </div>
+            </div>
+  
+            <i class="bx bx-chevron-right toggle" id="sherep"></i>
+          </header>
+  
+          <div class="menu-bar">
+            <div class="menu">
+              <!-- <li class="search-box">
+                              <i class='bx bx-search-alt-2 icon' ></i>
+                              <input type="search" placeholder="Search...">
+                          </li>  -->
+              <hr class="divider" />
+              <ul class="menu-links">
+                <li class="nav-links">
+                  <a href="/vendor/dashboard" class="active">
+                    <i class="fa-solid fa-house icon"></i>
+                    <span class="text nav-text">Dashboard</span>
+                  </a>
+                </li>
+                <li class="nav-links">
+                  <a href="" class="prof">
+                    <i class="fa-solid fa-user-gear icon"></i>
+                    <span class="text nav-text">Profile</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+  
+            <div class="bottom-content">
+              <li class="nav-links">
+                <a id="logout">
+                  <i class="fa-solid fa-power-off icon"></i>
+                  <span class="text nav-text">Logout</span>
+                </a>
+              </li>
+              <li class="mode">
+                <div class="moon-sun">
+                  <i class="fa-solid fa-moon icon moon"></i>
+                  <i class="fa-solid fa-sun icon sun"></i>
+                </div>
+                <span class="mode-text text">Dark Mode</span>
+                <div class="toggle-switch">
+                  <span class="switch"></span>
+                </div>
+              </li>
+            </div>
+          </div>
+        </nav>
+        <nav class="sidebar close mobile-view">
+          <header>
+            <div class="image-text">
+              <span class="image">
+                <img src="/public/favicon.ico" alt="" />
+              </span>
+  
+              <div class="text header-text">
+                <span class="name">CartWheels</span>
+                <span class="xxx"><i class="fa-solid fa-x" id="xxx"></i></span>
+              </div>
+            </div>
+  
+            <i class="bx bx-chevron-right toggle" id="sherep"></i>
+          </header>
+  
+          <div class="menu-bar">
+            <div class="menu">
+              <hr class="divider" />
+              <ul class="menu-links">
+                <li class="nav-links">
+                  <a href="/vendor/dashboard" class="active">
+                    <i class="fa-solid fa-house icon"></i>
+                    <span class="text nav-text">Dashboard</span>
+                  </a>
+                </li>
+                <li class="nav-links">
+                  <a href="" class="secondact">
+                    <i class="fa-solid fa-user-gear icon"></i>
+                    <span class="text nav-text">Profile</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+  
+            <div class="bottom-content">
+              <li class="nav-links">
+                <a href="">
+                  <i class="fa-solid fa-power-off icon"></i>
+                  <span class="text nav-text">Logout</span>
+                </a>
+              </li>
+              <!-- <li class="mode">
+                <div class="moon-sun">
+                  <i class="fa-solid fa-moon icon moon"></i>
+                  <i class="fa-solid fa-sun icon sun"></i>
+                </div>
+                <span class="mode-text text">Dark Mode</span>
+                <div class="toggle-switch">
+                  <span class="switch"></span>
+                </div>
+              </li> -->
+            </div>
+          </div>
+        </nav>
+  
+        <!-- ========================home========================= -->
+  
+        <div class="mother-container">
+          <section class="home">
+            <div class="container1">
+              <div class="bars-container">
+                <i class="fa-solid fa-bars" id="bars"></i>
+              </div>
+              <div class="vendors-name">Vendors Name</div>
+              <div class="business-logo">
+                <img src="/public/img/default_image.png" alt="" />
+              </div>
+            </div>
+  
+            <!--====================== map-section===================== -->
+  
+            <div class="container2">
+              <div class="map-section">
+                <div class="map-position">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.543623478162!2d121.37456157480499!3d13.746057897426992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd3b297ee40e2f%3A0x99d35b4762a59927!2sSan%20Juan%20Batangas!5e0!3m2!1sen!2sph!4v1707031808771!5m2!1sen!2sph"
+                    width="100%"
+                    height="100%"
+                    style="border: 0"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </div>
+                <div class="location-section">
+                  <div class="location-position">
+                    <h2>
+                      <i class="fa-solid fa-location-dot"></i>Poctol San Juan
+                      Batangas
+                    </h2>
+                  </div>
+                  <div class="button-section">
+                    <button class="button-getLocation">
+                      <span class="button-content">Get Location</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <!-- =========================business-container ==================-->
+            <div class="settings-container">
+              <div class="buss-container">
+                <div class="bus1-container">
+                  <div class="instruct-cons">
+                    <p>
+                      This segment is designed to modify and enhance your business
+                      profile. Updating it will ensure that your refreshed
+                      business profile becomes visible to customers.
+                    </p>
+                  </div>
+                  <div class="logo-pic">
+                    <img src="/public/img/default_image.png" alt="" />
+                  </div>
+                  <div class="busin-info-container">
+                    <input type="text" placeholder="Enter your Business Name" />
+                    <textarea
+                      name=""
+                      id=""
+                      cols="30"
+                      rows="10"
+                      placeholder="Enter Business Description"
+                    ></textarea>
+                  </div>
+                  <div class="butt-container">
+                    <button class="button-getLocation">
+                      <span class="button-content">Update</span>
+                    </button>
+                  </div>
+                </div>
+                <div class="output-container">
+                  <div class="des-info">
+                    <p>
+                      This represents how your business profile appears from the
+                      perspective of customers.
+                    </p>
+                  </div>
+                  <div class="super-card">
+                    <div class="wrapper">
+                      <div class="food-image">
+                        <img src="/public/img/food1.jpg" alt="" />
+                      </div>
+                      <div class="descripts">
+                        <h4 id="title">Jonathan</h4>
+                        <p class="line-clamp">
+                          Short Description about your business Lorem ipsum dolor
+                          sit amett.Short Description about your business Lorem ipsum dolor
+                          sit amett.
+                          Short Description about your business Lorem ipsum dolor
+                          sit amett.
+                          Short Description about your business Lorem ipsum dolor
+                          sit amett.
+                          Short Description about your business Lorem ipsum dolor
+                          sit amett.
+                        </p>
+                        <div class="buttons-container">
+                          <button class="btns">View</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="prof-container">
+                <!-- <div class="infos-area">
+                  <p>Navigate to your account settings where you can seamlessly
+                    modify and enhance your email, username, and password, ensuring
+                    a personalized and secure online profile.</p>
+                </div> -->
+                <section class="main-content">
+                  <form
+                    action="#"
+                    method="post"
+                    class="form"
+                    id="registration-form"
+                  >
+                    <div class="paragraph">
+                      <h3>Update your account</h3>
+                      <p style="font-size: 12px">
+                        Update your account swiftly for the latest and
+                        personalized information.
+                      </p>
+                    </div>
+                    <div class="button--container1"></div>
+  
+                    <div class="line">
+                      <div></div>
+                      <div><p></p></div>
+                      <div></div>
+                    </div>
+  
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        id="fullname"
+                        name="fullname"
+                        placeholder="Full Name"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Email"
+                      />
+                      <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Password"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <!-- <input type="text" id="address" name="address" placeholder="Address"> -->
+                    </div>
+  
+                    <div class="buttons">
+                      <button type="submit" id="submit" class="btn">
+                        Update<i class="fa-solid fa-greater-than"></i>
+                      </button>
+                    </div>
+  
+                    <div class="inst">
+                      <p>Ensure that the information you input is accurate.</p>
+                    </div>
+                  </form>
+                </section>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <script type="text/javascript" src="/public/js/vendor.settings.js"></script>
+</body>
+</html>

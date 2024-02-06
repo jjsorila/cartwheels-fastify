@@ -1,0 +1,818 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap");
+
+* {
+  font-family: "Poppins", "sans-serif";
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.business-logo img {
+  width: 100%;
+  height: 100%;
+}
+
+img {
+  object-fit: fill !important;
+}
+
+/*-------------COLORS----------------*/
+:root {
+  --body-color: #e4e9f2;
+  --sidebar-color: #fff;
+  --primary-color: #695cfe;
+  --primary-color-light: #f6f5ff;
+  --toggle-color: #ddd;
+  --text-color: #707070;
+
+  /*-------------Transition-------------*/
+  --tra-02: all 0.4s ease;
+  --tra-03: all 0.3s ease;
+  --tra-04: all 0.4s ease;
+  --tra-05: all 0.5s ease;
+}
+
+body {
+  height: 100vh;
+  background: var(--body-color);
+}
+
+.menu-links .nav-links .active {
+  background: var(--primary-color);
+  color: #fff;
+}
+.menu-links .nav-links .active i {
+  color: #fff;
+}
+
+.menu-links .nav-links .active span {
+  color: #fff;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  max-width: 1550px;
+  margin: 0 auto;
+}
+
+body.dark {
+  --body-color: #0f172a;
+  --sidebar-color: #1e293b;
+  --primary-color: #3a3b3c;
+  --primary-color-light: #283447;
+  --toggle-color: #374255;
+  --text-color: #ccc;
+  transition: var(--tra-04);
+}
+
+/*============Resuable CSS====================*/
+
+.sidebar .text {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-color);
+  transition: var(--tra-03);
+  white-space: nowrap;
+  opacity: 1;
+}
+
+.sidebar .image {
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*===========sidebar==========*/
+.mobile-view{
+    display: none;
+}
+.sidebar header {
+  position: relative;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  width: 267px;
+  padding: 10px 14px;
+  background: var(--sidebar-color);
+  transition: var(--tra-05);
+  z-index: 100;
+}
+
+.sidebar.close {
+  width: 88px;
+}
+
+hr.divider {
+  border: none;
+  height: 1.5px;
+  background-color: #ccc; /* You can change the color as needed */
+  margin: 10px 0; /* Adjust the margin as needed */
+}
+
+.sidebar.close .text {
+  opacity: 0;
+  position: fixed;
+}
+
+.sidebar li {
+  height: 50px;
+  margin-top: 10px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar li .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  font-size: 20px;
+}
+
+.sidebar li .icon,
+.sidebar li .text {
+  color: var(--text-color);
+  transition: var(--tra-02);
+}
+.sidebar .image-text img {
+  width: 40px;
+  border-radius: 6px;
+}
+
+.sidebar header i {
+  cursor: pointer;
+}
+
+.sidebar header .image-text {
+  display: flex;
+  align-items: center;
+}
+
+header .image-text .header-text {
+  display: flex;
+}
+
+.header-text .name {
+  font-weight: 600;
+}
+.header-text .profession {
+  margin-top: -2px;
+}
+
+.sidebar header .toggle {
+  position: absolute;
+  top: 50%;
+  right: -25px;
+  transform: translateY(-50%) rotate(180deg);
+  height: 25px;
+  width: 25px;
+  background: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--sidebar-color);
+  font-size: 22px;
+  transition: var(--tra-03);
+}
+
+.sidebar.close header .toggle {
+  transform: translateY(-50%);
+}
+
+body.dark .sidebar header .toggle {
+  transform: rotate(180deg);
+  color: var(--text-color);
+}
+
+.sidebar .search-box {
+  background: var(--primary-color-light);
+}
+
+.search-box input {
+  height: 100%;
+  width: 100%;
+  background: var(--primary-color-light);
+  outline: none;
+  border: none;
+  border-radius: 6px;
+}
+
+.sidebar li a {
+  text-decoration: none;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  transition: var(--tra-04);
+}
+
+.sidebar li a:hover {
+  background: var(--primary-color);
+  cursor: pointer;
+}
+
+.sidebar li a:hover .icon,
+.sidebar li a:hover .text {
+  color: var(--sidebar-color);
+}
+
+body.dark .sidebar li a:hover .icon,
+body.dark .sidebar li a:hover .text {
+  color: var(--text-color);
+}
+
+.sidebar .menu-bar {
+  height: calc(100% - 50px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menu-bar .mode {
+  position: relative;
+  border-radius: 6px;
+  background: var(--primary-color-light);
+}
+
+.menu-bar .mode .moon-sun {
+  height: 50px;
+  width: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.menu-bar .mode i {
+  position: absolute;
+  transition: var(--tra-03);
+}
+
+.menu-bar .mode i.sun {
+  opacity: 0;
+}
+
+body.dark .menu-bar .mode i.sun {
+  opacity: 1;
+}
+
+body.dark .menu-bar .mode i.moon {
+  opacity: 0;
+}
+
+.menu-bar .mode .toggle-switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-width: 60px;
+  position: absolute;
+  border-radius: 6px;
+  right: 0;
+  background: var(--primary-color-light);
+}
+
+.toggle-switch .switch {
+  position: relative;
+  height: 22px;
+  width: 44px;
+  border-radius: 25px;
+  background: var(--toggle-color);
+  cursor: pointer;
+}
+
+.switch::before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  height: 15px;
+  width: 15px;
+  cursor: pointer;
+  background: var(--sidebar-color);
+  transition: var(--tra-03);
+}
+
+body.dark .switch::before {
+  left: 24px;
+}
+
+/*=================Container1=======================*/
+
+.home {
+  position: relative;
+  /* left: 250px; */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100vh;
+  width: calc(100% - 250px);
+  width: 100%;
+  transition: var(--tra-05);
+  padding: 1rem;
+}
+
+.home .text {
+  color: var(--text-color);
+}
+.sidebar.close ~ .home {
+  /* left: 88px; */
+  width: calc(100% - 88px);
+}
+
+.bars-container i {
+  font-size: 29px;
+}
+
+.bars-container i:hover {
+  cursor: pointer;
+}
+
+.container1 {
+  height: 70px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 1rem;
+  background: var(--sidebar-color);
+  color: var(--text-color);
+}
+
+.home .container1 .business-logo {
+  border: 1px solid;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.content1 {
+  height: 100%;
+  width: 100%;
+  gap: 1rem;
+  display: flex;
+}
+.container2 {
+  max-height: 633px;
+  width: 70%;
+  /* background: var(--sidebar-color); */
+  /* display: flex; */
+  border-radius: 6px;
+}
+
+.card-container {
+  height: 120px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card {
+  padding: 1rem;
+  height: 100%;
+  width: 290px;
+  border-radius: 6px;
+  background: var(--sidebar-color);
+}
+
+.card h3 {
+  font-size: 20px;
+  color: var(--text-color);
+}
+.card .prod-num {
+  margin-top: 0.6rem;
+  font-size: 11px;
+  color: var(--text-color);
+}
+.prod-num h1 {
+  background: var(--sidebar-color);
+}
+.vendor-productContainer {
+  margin-top: 1rem;
+  height: 491px;
+  border-radius: 6px;
+  padding: 1rem;
+  background: var(--sidebar-color);
+}
+
+.productContainer {
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.product-nameContainer {
+  background: var(--primary-color-light);
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-nameContainer h2 {
+  color: var(--text-color);
+  font-size: 15px;
+}
+
+.prod-card {
+  overflow: hidden;
+  width: 300px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+}
+.prod-num {
+  background: var(--primary-color-light);
+}
+
+.product-nameContainer {
+  text-align: center;
+}
+.imge-container {
+  height: 80%;
+}
+
+.imge-container img {
+  height: 100%;
+  width: 100%;
+}
+
+.adding-prod {
+  width: 30%;
+  height: 100%;
+}
+
+.prod-cons {
+  width: 100%;
+  height: 220px;
+  border-radius: 6px;
+  background: var(--sidebar-color);
+  padding: 1rem;
+}
+.prodh1 h2 {
+  color: var(--text-color);
+}
+.input-prod {
+  height: 150px;
+  margin-top: 1rem;
+  display: flex;
+}
+
+.input-prod .pr {
+  width: 100%;
+  border: 1.5px solid #c7c7c7;
+  border-radius: 5px;
+  padding: 0.7rem;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  outline: 0;
+  background: var(--primary-color-light);
+  color: var(--text-color);
+}
+
+.input-prod .img-container input {
+  display: none;
+}
+.input-prod .img-container {
+  width: 40%;
+}
+.input-prod .img-container img {
+  height: 70%;
+  width: 80%;
+  cursor: pointer;
+}
+
+.input-prod .img-container .button-cons {
+  top: 20px;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.insti {
+  width: 70%;
+}
+
+.button-cons {
+  margin-top: 1rem;
+}
+
+.button-cons button {
+  padding: 0.6rem;
+  width: 100%;
+  cursor: pointer;
+  color: var(--text-color);
+  background: var(--primary-color-light);
+  border-radius: 6px;
+}
+
+.table-container {
+  border-radius: 6px;
+  margin-top: 1rem;
+  height: 390px;
+  background: var(--sidebar-color);
+  padding: 1rem;
+}
+
+.table-sec {
+  width: 100%;
+  position: relative;
+  overflow: auto;
+}
+.body-container {
+  max-height: 290px;
+  overflow: auto;
+}
+
+.table-sec .header-table {
+  border-radius: 6px;
+  background: var(--primary-color-light);
+  border: 1px solid var(--text-color);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  text-align: center;
+  padding: 1rem;
+  color: var(--text-color);
+}
+
+.table-sec .body-table {
+  border: 1px solid var(--text-color);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  text-align: center;
+  padding: 1rem;
+  color: var(--text-color);
+}
+
+.body-table .action-btn {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.body-table .action-btn button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.body-table .action-btn button i {
+  font-size: 1.5em;
+}
+
+.line {
+  background: var(--text-color);
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#delete i {
+  color: red;
+}
+
+#edit i {
+  color: orange;
+}
+
+.bars-container {
+  display: none;
+}
+.xxx i {
+  font-size: 25px;
+  margin-left: 1.5rem;
+  display: none;
+}
+
+/*=====================form===============*/
+
+.form {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--text-color);
+  background: var(--sidebar-color);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(10px);
+  padding: 1rem;
+  max-width: 350px;
+  height: 290px;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(147, 72, 72, 0.05);
+}
+
+.shadow {
+    position: fixed;
+    display: none;
+    inset: 0;
+    z-index: 101;
+    background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6));
+
+}
+
+.form-title {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  text-align: center;
+  
+}
+.img-change {
+  display: none;
+}
+
+.input-container {
+  position: relative;
+}
+
+.input-container input,
+.form button {
+  outline: none;
+  border: 1px solid #e5e7eb;
+  margin: 8px 0;
+  background: var(--primary-color-light);
+  color: var(--text-color);
+}
+.form button:hover{
+    background: var(--primary-color);
+    color:#fff;
+}
+.imahe {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.imahe img {
+  border: 1px solid blue;
+  height: 100%;
+  width: 50%;
+}
+
+.input-container input {
+  background-color: #fff;
+  padding: 1rem;
+  padding-right: 3rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  width: 300px;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.input-container span {
+  display: grid;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  place-content: center;
+}
+
+.apply {
+  display: block;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  background-color: #4f46e5;
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  width: 100%;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+/* -------------------------responsivenes-----------------*/
+
+@media screen and (max-width: 480px) {
+  .sidebar {
+    display: none;
+  }
+ 
+  .container {
+    height: max-content;
+    width: 100%;
+  }
+  .home {
+    width: 100% !important;
+    left: 0;
+    height: max-content;
+  }
+  .container1 {
+    width: 100%;
+  }
+  .container2 {
+    width: 100%;
+  }
+  .content1 {
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    gap: 14rem;
+  }
+  .card-container {
+    flex-direction: column;
+    width: 100% !important;
+    height: 50%;
+    gap: 1rem;
+  }
+  .card {
+    width: 100%;
+    height: 100px;
+  }
+  .productContainer {
+    grid-template-columns: repeat(1, 1fr) !important;
+    place-items: center;
+  }
+  .adding-prod {
+    width: 100%;
+  }
+  .bars-container {
+    display: block;
+  }
+  #sherep {
+    display: none;
+  }
+  #xxx {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .content1 {
+    flex-direction: column;
+    width: 100%;
+  }
+  .home {
+    left: 0;
+    height: max-content;
+  }
+  .card-container {
+    flex-direction: column;
+    width: 100% !important;
+    height: 50%;
+    gap: 1rem;
+  }
+  .container2 {
+    width: 100%;
+  }
+
+  .card {
+    width: 100%;
+    height: 100px;
+  }
+  .productContainer {
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+  }
+  .adding-prod {
+    width: 100%;
+  }
+  .container {
+    height: max-content;
+  }
+  .content1 {
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    gap: 14rem;
+  }
+  .sidebar {
+    max-width: 88px;
+    height: 100vh;
+  }
+  #sherep {
+    display: none;
+  }
+ 
+}
+

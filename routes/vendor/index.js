@@ -4,7 +4,13 @@ module.exports = async(app, opts) => {
         if(!request.session?.user) return reply.redirect("/auth")
     }
 
-    app.get("/dashboard", { onRequest }, async(request, reply) => {
+    app.addHook("onRequest", onRequest)
+
+    app.get("/dashboard", async(request, reply) => {
         return reply.view("vendor/dashboard.ejs")
+    })
+
+    app.get("/settings", async(request, reply) => {
+        return reply.view("vendor/settings.ejs")
     })
 }

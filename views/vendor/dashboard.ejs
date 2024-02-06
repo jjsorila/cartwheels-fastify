@@ -4,10 +4,271 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <%- include("../template/header.ejs") %>
+    <link rel="stylesheet" href="/public/css/vendor.dashboard.css" />
   </head>
   <body>
-    <h1>VENDOR DASHBOARD PAGE</h1>
+    <div class="container">
+      <nav class="sidebar close">
+          <header>
+              <div class="image-text">
+                  <span class="image">
+                      <img src="/public/favicon.ico" alt="">
+                  </span>
 
+                  <div class="text header-text">
+                      <span class="name">CartWheels</span>
+                      <!-- <span class="xxx"><i class="fa-solid fa-x" id="xxx"></i></span> -->
+                      <!-- <span class="profession">business Name</span> -->
+                  </div>
+              </div>
+
+              <i class='bx bx-chevron-right toggle' id="sherep"></i>
+          </header>
+
+          <div class="menu-bar">
+              <div class="menu">
+              
+                       <!-- <li class="search-box">
+                          <i class='bx bx-search-alt-2 icon' ></i>
+                          <input type="search" placeholder="Search...">
+                      </li>  -->
+                  <hr class="divider">
+                  <ul class="menu-links">
+                      <li class="nav-links">
+                          <a href="" class="active">
+                              <i class="fa-solid fa-house icon"></i>
+                              <span class="text nav-text">Dashboard</span>
+                          </a>
+                      </li>
+                      <li class="nav-links">
+                          <a href="/vendor/settings">
+                              <i class="fa-solid fa-user-gear icon"></i>
+                              <span class="text nav-text">Profile</span>
+                          </a>
+                      </li>
+                      
+                  </ul>
+              </div>
+
+              <div class="bottom-content">
+                      <li class="nav-links">
+                          <a id="logout">
+                              <i class="fa-solid fa-power-off icon"></i>
+                              <span class="text nav-text">Logout</span>
+                          </a>
+                      </li>
+                      <li class="mode">
+                          <div class="moon-sun">
+                              <i class="fa-solid fa-moon icon moon"></i>
+                              <i class="fa-solid fa-sun icon sun"></i>
+                          </div>
+                          <span class="mode-text text">Dark Mode</span>
+                          <div class="toggle-switch">
+                              <span class="switch"></span>
+                          </div>
+                      </li>
+              </div>
+          </div>
+      </nav>
+      <nav class="sidebar close mobile-view">
+          <header>
+              <div class="image-text">
+                  <span class="image">
+                      <img src="/public/img/favicon.ico" alt="">
+                  </span>
+
+                  <div class="text header-text">
+                      <span class="name">CartWheels</span>
+                      <span class="xxx"><i class="fa-solid fa-x" id="xxx"></i></span>
+                      <!-- <span class="profession">business Name</span> -->
+                  </div>
+              </div>
+
+              <i class='bx bx-chevron-right toggle' id="sherep"></i>
+          </header>
+
+          <div class="menu-bar">
+              <div class="menu">
+              
+                       <!-- <li class="search-box">
+                          <i class='bx bx-search-alt-2 icon' ></i>
+                          <input type="search" placeholder="Search...">
+                      </li>  -->
+                  <hr class="divider">
+                  <ul class="menu-links">
+                      <li class="nav-links">
+                          <a href="" class="active">
+                              <i class="fa-solid fa-house icon"></i>
+                              <span class="text nav-text">Dashboard</span>
+                          </a>
+                      </li>
+                      <li class="nav-links">
+                          <a href="/vendor/settings">
+                              <i class="fa-solid fa-user-gear icon"></i>
+                              <span class="text nav-text">Profile</span>
+                          </a>
+                      </li>
+                      
+                  </ul>
+              </div>
+
+              <div class="bottom-content">
+                      <li class="nav-links">
+                          <a href="">
+                              <i class="fa-solid fa-power-off icon"></i>
+                              <span class="text nav-text">Logout</span>
+                          </a>
+                      </li>
+                      <li class="mode">
+                          <div class="moon-sun">
+                              <i class="fa-solid fa-moon icon moon"></i>
+                              <i class="fa-solid fa-sun icon sun"></i>
+                          </div>
+                          <span class="mode-text text">Dark Mode</span>
+                          <div class="toggle-switch">
+                              <span class="switch"></span>
+                          </div>
+                      </li>
+              </div>
+          </div>
+      </nav>
+      <section class="home" >
+          <div class="container1">
+              <div class="bars-container">
+                  <i class="fa-solid fa-bars" id="bars"></i>
+              </div>
+              <div class="vendors-name">Vendors Name</div>
+              <div class="business-logo">
+                  <img src="/public/img/default_image.png" alt="">
+              </div>
+          </div>
+          <div class="content1">
+              <div class="container2">
+                 <div class="card-container">
+                    <div class="card">
+                      <div class="title-card"><h3>Number of Products</h3></div>
+                      <div class="prod-num">
+                          <h1>10</h1>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="title-card"><h3>Location</h3></div>
+                      <div class="prod-num">
+                          <h1>Poctol San Juan Batangas</h1>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="title-card"><h3>Date of Register</h3></div>
+                      <div class="prod-num">
+                          <h1>02/12/2023</h1>
+                      </div>
+                    </div>
+                 </div>
+                 <div class="vendor-productContainer">
+                  <div class="productContainer">
+                      <div class="prod-card">
+                          <div class="imge-container">
+                              <img src="/public/img/icecream.jpg" alt="">
+                          </div>
+                          <div class="product-nameContainer">
+                              <h2>Name of product</h2>
+                          </div>
+                      </div>
+                      <div class="prod-card">
+                          <div class="imge-container">
+                              <img src="/public/img/icecream.jpg" alt="">
+                          </div>
+                          <div class="product-nameContainer">
+                              <h2>Name of product</h2>
+                          </div>
+                      </div>
+                      <div class="prod-card">
+                          <div class="imge-container">
+                              <img src="/public/img/icecream.jpg" alt="">
+                          </div>
+                          <div class="product-nameContainer">
+                              <h2>Name of product</h2>
+                          </div>
+                      </div>
+                      <div class="prod-card">
+                          <div class="imge-container">
+                              <img src="/public/img/icecream.jpg" alt="">
+                          </div>
+                          <div class="product-nameContainer">
+                              <h2>Name of product</h2>
+                          </div>
+                      </div>
+                      <div class="prod-card">
+                          <div class="imge-container">
+                              <img src="/public/img/icecream.jpg" alt="">
+                          </div>
+                          <div class="product-nameContainer">
+                              <h2>Name of product</h2>
+                          </div>
+                      </div>
+                      <div class="prod-card">
+                          <div class="imge-container">
+                              <img src="/public/img/icecream.jpg" alt="">
+                          </div>
+                          <div class="product-nameContainer">
+                              <h2>Name of product</h2>
+                          </div>
+                      </div>
+                  </div>
+                 </div>
+              </div>
+              <div class="adding-prod">
+                  <div class="prod-cons">
+                      <div class="prodh1">
+                          <h2>Add products</h2>
+                      </div>
+                      <div class="input-prod">
+                          <div class="img-container">
+                              <input type="file" id="input-img">
+                              <img src="/public/img/default_image.png" alt="" id="upload-img">
+                          </div>
+                          <div class="insti">
+                           <input class="pr" type="text" placeholder="Product Name">
+                           <div class="button-cons">
+                              <button id="add">ADD</button>
+                           </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="table-container">
+                      <div class="table-sec">
+                          <div class="header-table">
+                              <div class="prod-name">Product Name</div>
+                              <div class="actions">Action</div>
+                          </div>
+                          <div class="body-container">
+                              <div class="body-table">
+                                  <div>Ice cream</div>
+                                  <div class="action-btn"><button id="edit"><i class="fa-solid fa-pen-to-square"></i></button><button id="delete"><i class="fa-solid fa-trash"></i></button></div>
+                              </div>
+                          <div class="line"></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      
+  </div>
+  <div class="shadow">
+      <form class="form">
+          <p class="form-title">EDIT YOUR PRODUCT</p>
+           <div class="input-container">
+             <input type="file" id="fileInput" class="img-change">
+             <div class="imahe" id="fileClick">
+               <img src="/public/img/default_image.png">
+             </div>
+         </div>
+         <div class="input-container">
+            <input id="newProduct" placeholder="Product Name" type="text">
+          </div>
+          <button class="apply" id="apply" type="submit">APPLY</button>
+      </form>
+  </div>
     <script type="text/javascript" src="/public/js/vendor.dashboard.js"></script>
   </body>
 </html>
