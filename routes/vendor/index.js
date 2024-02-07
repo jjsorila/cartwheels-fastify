@@ -1,4 +1,5 @@
 const VendorModel = require("../../models/vendors")
+const dayjs = require("dayjs")
 
 module.exports = async(app, opts) => {
     ////REDIRECT LOGGED OUT VENDORS
@@ -9,7 +10,8 @@ module.exports = async(app, opts) => {
     app.addHook("onRequest", onRequest)
 
     app.get("/dashboard", async(request, reply) => {
-        return reply.view("vendor/dashboard.ejs")
+        const vendor = await VendorModel.findById(request.session.user._id).populate("products")
+        return reply.view("vendor/dashboard.ejs", { user: vendor, dayjs })
     })
 
     app.get("/settings", async(request, reply) => {

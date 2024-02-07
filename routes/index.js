@@ -1,3 +1,5 @@
+const VendorsModel = require("../models/vendors")
+
 module.exports = async(app, opts) => {
     //REDIRECT LOGGED IN VENDORS
     const onRequest = async(request, reply) => {
@@ -5,10 +7,11 @@ module.exports = async(app, opts) => {
     }
 
     app.get("/", async(request, reply) => {
-        return reply.view("customer.ejs")
+        const vendors = await VendorsModel.find().select("_id businessName businessImage description").exec()
+        return reply.view("customer.ejs", { vendors })
     })
 
-    app.get("/info", async(request, reply) => {
+    app.get("/info/:id", async(request, reply) => {
         return reply.view("foodInfo.ejs")
     })
 

@@ -1,6 +1,7 @@
 const bcrypt = require("bcryptjs")
 const path = require("path")
 const VendorModel = require("../../../models/vendors")
+const ProductsModel = require("../../../models/products")
 const SendMail = require("../../../config/mail")
 const { v4 } = require("uuid")
 const multer = require('fastify-multer')
@@ -149,7 +150,7 @@ module.exports = async(app, opts) => {
                     if(req.file){
                         const vendor = await VendorModel.findById(_id).exec()
 
-                        await fs.unlink(`${process.cwd()}/${vendor.businessImage}`)
+                        if(!vendor.businessImage.includes("default_image.png")) await fs.unlink(`${process.cwd()}/${vendor.businessImage}`)
 
                         newBusinessInfo.businessImage = `/public/img/${uploadedFileName}`
                         uploadedFileName = null
@@ -178,6 +179,67 @@ module.exports = async(app, opts) => {
                     })
 
                     return { operation: true, msg: "Vendor Information Updated!" }
+            }
+
+        } catch (error) {
+            console.log(error)
+            return res.code(500).send({ operation: false, msg: "Server Error" })
+        }
+    })
+
+    //PRODUCTS OPERATIONS
+    app.post("/products", async(req, res) => {
+        try {
+            const { action, _id } = req.body
+            const currentVendor = await VendorModel.findById(_id).populate("products").exec()
+
+            switch(action){
+                case "add":
+                    const { productName } = req.body
+
+                    const newProduct = new ProductsModel({
+                        name: productName,
+                        productImage: `/public/img/${uploadedFileName}`
+                    })
+
+                    uploadedFileName = null
+
+                    currentVendor.products.push(newProduct._id)
+
+                    await newProduct.save()
+                    await currentVendor.save()
+
+                    return { operation: true, msg: "Product Added" };
+                case "update":
+                    const { updateProductId, newName } = req.body
+                    
+                    const updateProduct = await ProductsModel.findById(updateProductId).exec()
+
+                    updateProduct.name = newName
+
+                    if(uploadedFileName){
+                        await fs.unlink(`${process.cwd()}${updateProduct.productImage}`)
+                        updateProduct.productImage = `/public/img/${uploadedFileName}`
+                        uploadedFileName = null
+                    }
+                    
+                    await updateProduct.save()
+
+                    return { operation: true, msg: "Product Updated" };
+                case "delete":
+                    const { productId } = req.body
+
+                    const deleted = await ProductsModel.findByIdAndDelete(productId).exec()
+
+                    const deletedProductIndex = currentVendor.products.indexOf(productId)
+                    currentVendor.products.splice(deletedProductIndex, 1)
+
+                    await currentVendor.save()
+                    await fs.unlink(`${process.cwd()}${deleted.productImage}`)
+
+                    return { operation: true, msg: "Product Deleted" };
+                case "read":
+                    return { operation: true, data: currentVendor.products };
             }
 
         } catch (error) {

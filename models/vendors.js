@@ -3,6 +3,10 @@ const { Schema } = mongoose
 
 const VendorSchema = new Schema({
     fullname: String,
+    dateRegistered: {
+        type: Date,
+        default: new Date()
+    },
     email: String,
     businessImage: {
         type: String,

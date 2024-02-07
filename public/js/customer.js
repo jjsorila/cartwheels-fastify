@@ -10,7 +10,9 @@ $(function(e) {
                 $(this).closest("div.wrapper").css({ display: "none" })
             }
         })
+    })
 
-
+    $("button.view").click(function(e) {
+        location.href = `/info/${$(this).attr("id")}`
     })
 })

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/public/css/vendor.dashboard.css" />
   </head>
   <body>
+    <input type="hidden" id="_id" value="<%= user._id %>" />
     <div class="container">
       <nav class="sidebar close">
           <header>
@@ -137,9 +138,9 @@
               <div class="bars-container">
                   <i class="fa-solid fa-bars" id="bars"></i>
               </div>
-              <div class="vendors-name">Vendors Name</div>
+              <div class="vendors-name"><%= user.businessName %></div>
               <div class="business-logo">
-                  <img src="/public/img/default_image.png" alt="">
+                  <img src="<%= user.businessImage %>" alt="">
               </div>
           </div>
           <div class="content1">
@@ -148,72 +149,25 @@
                     <div class="card">
                       <div class="title-card"><h3>Number of Products</h3></div>
                       <div class="prod-num">
-                          <h1>10</h1>
+                          <h1 id="prod-number"></h1>
                       </div>
                     </div>
                     <div class="card">
                       <div class="title-card"><h3>Location</h3></div>
                       <div class="prod-num">
-                          <h1>Poctol San Juan Batangas</h1>
+                          <h1><%= user.location?.name %></h1>
                       </div>
                     </div>
                     <div class="card">
                       <div class="title-card"><h3>Date of Register</h3></div>
                       <div class="prod-num">
-                          <h1>02/12/2023</h1>
+                          <h1><%= dayjs(user.dateRegistered).format("MM/DD/YYYY") %></h1>
                       </div>
                     </div>
                  </div>
                  <div class="vendor-productContainer">
                   <div class="productContainer">
-                      <div class="prod-card">
-                          <div class="imge-container">
-                              <img src="/public/img/icecream.jpg" alt="">
-                          </div>
-                          <div class="product-nameContainer">
-                              <h2>Name of product</h2>
-                          </div>
-                      </div>
-                      <div class="prod-card">
-                          <div class="imge-container">
-                              <img src="/public/img/icecream.jpg" alt="">
-                          </div>
-                          <div class="product-nameContainer">
-                              <h2>Name of product</h2>
-                          </div>
-                      </div>
-                      <div class="prod-card">
-                          <div class="imge-container">
-                              <img src="/public/img/icecream.jpg" alt="">
-                          </div>
-                          <div class="product-nameContainer">
-                              <h2>Name of product</h2>
-                          </div>
-                      </div>
-                      <div class="prod-card">
-                          <div class="imge-container">
-                              <img src="/public/img/icecream.jpg" alt="">
-                          </div>
-                          <div class="product-nameContainer">
-                              <h2>Name of product</h2>
-                          </div>
-                      </div>
-                      <div class="prod-card">
-                          <div class="imge-container">
-                              <img src="/public/img/icecream.jpg" alt="">
-                          </div>
-                          <div class="product-nameContainer">
-                              <h2>Name of product</h2>
-                          </div>
-                      </div>
-                      <div class="prod-card">
-                          <div class="imge-container">
-                              <img src="/public/img/icecream.jpg" alt="">
-                          </div>
-                          <div class="product-nameContainer">
-                              <h2>Name of product</h2>
-                          </div>
-                      </div>
+                    <!-- PRODUCTS VIEW HERE -->
                   </div>
                  </div>
               </div>
@@ -228,7 +182,7 @@
                               <img src="/public/img/default_image.png" alt="" id="upload-img">
                           </div>
                           <div class="insti">
-                           <input class="pr" type="text" placeholder="Product Name">
+                           <input class="pr" type="text" id="addProduct" placeholder="Product Name">
                            <div class="button-cons">
                               <button id="add">ADD</button>
                            </div>
@@ -241,11 +195,9 @@
                               <div class="prod-name">Product Name</div>
                               <div class="actions">Action</div>
                           </div>
-                          <div class="body-container">
-                              <div class="body-table">
-                                  <div>Ice cream</div>
-                                  <div class="action-btn"><button id="edit"><i class="fa-solid fa-pen-to-square"></i></button><button id="delete"><i class="fa-solid fa-trash"></i></button></div>
-                              </div>
+                          <div class="body-container products-table">
+                            <!-- PRODUCTS TABLE HERE -->
+                          </div>  
                           <div class="line"></div>
                       </div>
                   </div>
@@ -258,6 +210,7 @@
       <form class="form">
           <p class="form-title">EDIT YOUR PRODUCT</p>
            <div class="input-container">
+            <input type="hidden" id="toUpdate">
              <input type="file" id="fileInput" class="img-change">
              <div class="imahe" id="fileClick">
                <img src="/public/img/default_image.png">

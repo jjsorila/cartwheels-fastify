@@ -23,78 +23,23 @@
         <div class="container2">
           <div class="food-container">
             <div class="card">
+              <% if(vendors.length > 0) { vendors.forEach((v) => { %>
               <div class="wrapper">
                 <div class="food-image">
                   <img src="/public/img/icecream.jpg" alt="" />
                 </div>
                 <div class="descript">
-                  <h4 class="title">Jefferson</h4>
+                  <h4 class="title"><%= v.businessName %></h4>
                   <p class="p-descript">
-                    Short Description about your business Lorem ipsum dolor sit
-                    amett.Short Description about your business Lorem ipsum
-                    dolor sit amett.Short Description about your business Lorem
-                    ipsum dolor sit amett.Short Description about your business
-                    Lorem ipsum dolor sit amett.Short Description about your
-                    business Lorem ipsum dolor sit amett.Short Description about
-                    your business Lorem ipsum dolor sit amett.Short Description
-                    about your business Lorem ipsum dolor sit amett.Short
-                    Description about your business Lorem ipsum dolor sit
-                    amett.Short Description about your business Lorem ipsum
-                    dolor sit amett.Short Description about your business Lorem
-                    ipsum dolor sit amett.Short Description about your business
-                    Lorem ipsum dolor sit amett.Short Description about your
-                    business Lorem ipsum dolor sit amett.
+                    <%= v.description %>
                   </p>
                   <div class="button-container">
-                    <button class="btn">View</button>
+                    <button id="<%= v._id %>" class="btn view">View</button>
                   </div>
                 </div>
               </div>
-              <div class="wrapper">
-                <div class="food-image">
-                  <img src="/public/img/food3.jpg" alt="" />
-                </div>
-                <div class="descript">
-                  <h4 class="title">John Jhovir</h4>
-                  <p class="p-descript">
-                    Short Description about your business Lorem ipsum dolor sit
-                    amett.
-                  </p>
-                  <div class="button-container">
-                    <button class="btn">View</button>
-                  </div>
-                </div>
-              </div>
-              <div class="wrapper">
-                <div class="food-image">
-                  <img src="/public/img/food2.jpg" alt="" />
-                </div>
-                <div class="descript">
-                  <h4 class="title">Jarod</h4>
-                  <p class="p-descript">
-                    Short Description about your business Lorem ipsum dolor sit
-                    amett.
-                  </p>
-                  <div class="button-container">
-                    <button class="btn">View</button>
-                  </div>
-                </div>
-              </div>
-              <div class="wrapper">
-                <div class="food-image">
-                  <img src="/public/img/food1.jpg" alt="" />
-                </div>
-                <div class="descript">
-                  <h4 class="title">Jonathan</h4>
-                  <p class="p-descript">
-                    Short Description about your business Lorem ipsum dolor sit
-                    amett.
-                  </p>
-                  <div class="button-container">
-                    <button class="btn">View</button>
-                  </div>
-                </div>
-              </div>
+
+              <% }) } %>
             </div>
           </div>
         </div>

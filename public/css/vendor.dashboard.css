@@ -412,8 +412,18 @@ body.dark .switch::before {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
+  position: relative;
   flex-wrap: wrap;
 }
+
+.noProducts {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: var(--text-color);
+  transform: translate(-50%, -50%);
+}
+
 .product-nameContainer {
   background: var(--primary-color-light);
   height: 20%;
