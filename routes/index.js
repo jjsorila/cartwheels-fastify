@@ -7,12 +7,14 @@ export default async(app, opts) => {
     }
 
     app.get("/", async(request, reply) => {
-        const vendors = await VendorsModel.find().select("_id businessName businessImage description").exec()
+        const vendors = await VendorsModel.find({ location: { $ne: null } }).select("_id businessName businessImage description").exec()
         return reply.view("customer.ejs", { vendors })
     })
 
-    app.get("/info/:id", async(request, reply) => {
-        return reply.view("foodInfo.ejs")
+    app.get("/info/:_id", async(request, reply) => {
+        const { _id } = request.params
+        const vendor = await VendorsModel.findById(_id).select("_id businessName description location products").populate("products").exec()
+        return reply.view("foodInfo.ejs", { vendor })
     })
 
     app.get("/auth", { onRequest } , async(request, reply) => {

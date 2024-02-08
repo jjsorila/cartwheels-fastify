@@ -22,7 +22,7 @@ app.register(AutoLoad, {
   dir: path.join(process.cwd(), "plugins")
 });
 
-//ROUTES
+//VIEW AND API ROUTES
 app.register(AutoLoad, {
   dir: path.join(process.cwd(), "routes")
 });

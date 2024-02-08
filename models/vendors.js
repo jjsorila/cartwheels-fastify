@@ -15,9 +15,12 @@ const VendorSchema = new Schema({
     businessName: String,
     password: String,
     location: {
-        latitude: Number,
-        longitude: Number,
-        name: String
+        type: {
+            latitude: Number,
+            longitude: Number,
+            name: String
+        },
+        default: null
     },
     description: String,
     products: [{

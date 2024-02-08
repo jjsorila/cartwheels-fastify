@@ -19,8 +19,9 @@ const storage = multer.diskStorage({
 const upload = multer({ storage })
 
 export default async(app, opts) => {
-    app.register(multer.contentParser)
 
+    //MULTER CONFIGURATIONS
+    app.register(multer.contentParser)
     app.addHook("preHandler", upload.single("img"))
 
     //REGISTER VENDOR
