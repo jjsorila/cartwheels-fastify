@@ -35,7 +35,7 @@ app.setNotFoundHandler(async(request, reply) => {
 const start = async () => {
   try {
     await connectDb();
-    await app.listen({ port: 5000 });
+    await app.listen({ port: 7000 });
   } catch (error) {
     console.log(error);
     process.exit(1);
