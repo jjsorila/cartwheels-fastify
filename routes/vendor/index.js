@@ -1,7 +1,7 @@
-const VendorModel = require("../../models/vendors")
-const dayjs = require("dayjs")
+import VendorModel from "../../models/vendors.js"
+import dayjs from "dayjs"
 
-module.exports = async(app, opts) => {
+export default async(app, opts) => {
     ////REDIRECT LOGGED OUT VENDORS
     const onRequest = async(request, reply) => {
         if(!request.session?.user) return reply.redirect("/auth")

@@ -1,7 +1,7 @@
-const nodemailer = require("nodemailer")
-const Brevo = require("nodemailer-brevo-transport")
+import nodemailer from 'nodemailer'
+import Brevo from "nodemailer-brevo-transport"
 
-module.exports = (email, token, req) => {
+export default (email, token, req) => {
     return nodemailer.createTransport(new Brevo({
         apiKey: process.env.BREVO_API_KEY
     })).sendMail({

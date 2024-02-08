@@ -9,6 +9,7 @@
   },
   "keywords": [],
   "author": "",
+  "type": "module",
   "license": "ISC",
   "dependencies": {
     "@fastify/autoload": "^5.8.0",

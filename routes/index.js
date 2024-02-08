@@ -1,6 +1,6 @@
-const VendorsModel = require("../models/vendors")
+import VendorsModel from "../models/vendors.js"
 
-module.exports = async(app, opts) => {
+export default async(app, opts) => {
     //REDIRECT LOGGED IN VENDORS
     const onRequest = async(request, reply) => {
         if(request.session?.user) return reply.redirect("/vendor/dashboard")

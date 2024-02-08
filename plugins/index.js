@@ -1,11 +1,14 @@
-const path = require("path");
-const fp = require("fastify-plugin");
-const fastifyCookie = require("@fastify/cookie");
-const fastifySession = require("@fastify/session");
-const jwt = require("@fastify/jwt")
-const MongoStore = require("connect-mongo");
+import path from 'path'
+import fp from "fastify-plugin";
+import fastifyCookie from '@fastify/cookie';
+import fastifySession from '@fastify/session';
+import fastifyJwt from '@fastify/jwt';
+import MongoStore from 'connect-mongo';
+import fastifyStatic from '@fastify/static';
+import fastifyView from '@fastify/view';
+import ejs from 'ejs'
 
-module.exports = fp(async function (app, options) {
+export default fp(async function (app, options) {
 
     app.register(fastifyCookie)
     app.register(fastifySession, {
@@ -22,7 +25,7 @@ module.exports = fp(async function (app, options) {
         })
     })
 
-    app.register(jwt, {
+    app.register(fastifyJwt, {
         secret: "B6E6D2UvM5TKlLCHBZF6HGJ19RpPcw13",
         sign: {
             algorithm: "HS256",
@@ -30,14 +33,14 @@ module.exports = fp(async function (app, options) {
         }
     })
     
-    app.register(require("@fastify/static"), {
+    app.register(fastifyStatic, {
         root: path.resolve(process.cwd(), "public"),
         prefix: "/public",
     });
 
-    app.register(require("@fastify/view"), {
+    app.register(fastifyView, {
         engine: {
-            ejs: require("ejs"),
+            ejs: ejs,
         },
         root: path.resolve(process.cwd(), "views"),
     });

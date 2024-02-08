@@ -1,4 +1,10 @@
-const app = require("fastify")({ 
+import fastify from "fastify";
+import { config } from "dotenv";
+import connectDb from "./config/db.js"
+import AutoLoad from '@fastify/autoload'
+import path from 'path'
+config({ path: path.resolve(process.cwd(),".env") })
+const app = fastify({ 
   logger: {
     transport: {
       target: 'pino-pretty',
@@ -10,10 +16,6 @@ const app = require("fastify")({
   }, 
   disableRequestLogging: true 
 });
-const connectDb = require("./config/db");
-const AutoLoad = require("@fastify/autoload")
-const path = require("path")
-require("dotenv").config({ path: path.resolve(process.cwd(),".env") })
 
 //GLOBAL PLUGINS
 app.register(AutoLoad, {

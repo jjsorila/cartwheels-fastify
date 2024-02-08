@@ -1,11 +1,11 @@
-const bcrypt = require("bcryptjs")
-const path = require("path")
-const VendorModel = require("../../../models/vendors")
-const ProductsModel = require("../../../models/products")
-const SendMail = require("../../../config/mail")
-const { v4 } = require("uuid")
-const multer = require('fastify-multer')
-const fs = require("fs/promises")
+import bcrypt from 'bcryptjs'
+import path from 'path'
+import VendorModel from "../../../models/vendors.js"
+import ProductsModel from "../../../models/products.js"
+import SendMail from "../../../config/mail.js"
+import { v4 } from 'uuid'
+import multer from 'fastify-multer'
+import fs from "fs/promises"
 let uploadedFileName = null
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
   })
 const upload = multer({ storage })
 
-module.exports = async(app, opts) => {
+export default async(app, opts) => {
     app.register(multer.contentParser)
 
     app.addHook("preHandler", upload.single("img"))

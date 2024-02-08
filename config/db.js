@@ -1,6 +1,6 @@
-const mongoose = require("mongoose")
+import mongoose from 'mongoose'
 
-module.exports = async() => {
+export default async() => {
     try {
         await mongoose.connect("mongodb://localhost:27017/cartwheels")
         console.log("MongoDB Connected")
