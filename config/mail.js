@@ -8,6 +8,6 @@ export default (email, token, req) => {
         from: `"Cartwheels: A Geospatial Tracker For Street Vendors" <plogic9@gmail.com>`,
         to: email,
         subject: `Reset Password`,
-        html: `<b>Click this <a href="http://${req.headers["host"]}/forgotpassword?token=${token}">link</a> to reset password of your account.</b>`
+        html: `<b>Click this <a href="https://${req.headers["host"]}/forgotpassword?token=${token}">link</a> to reset password of your account.</b>`
     })
 }
