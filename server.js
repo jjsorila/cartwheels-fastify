@@ -1,6 +1,7 @@
 import fastify from "fastify";
 import { config } from "dotenv";
 import connectDb from "./config/db.js"
+import fs from 'fs'
 import AutoLoad from '@fastify/autoload'
 import path from 'path'
 config({ path: path.resolve(process.cwd(),".env") })
@@ -14,7 +15,11 @@ const app = fastify({
       }
     }
   }, 
-  disableRequestLogging: true 
+  disableRequestLogging: true,
+  https: {
+    key: fs.readFileSync(path.resolve(process.cwd(),"ssl","example.key")),
+    cert: fs.readFileSync(path.resolve(process.cwd(),"ssl","example.crt"))
+  }
 });
 
 //GLOBAL PLUGINS
@@ -35,7 +40,7 @@ app.setNotFoundHandler(async(request, reply) => {
 const start = async () => {
   try {
     await connectDb();
-    await app.listen({ port: 7000 });
+    await app.listen({ port: 7000, host: "0.0.0.0" });
   } catch (error) {
     console.log(error);
     process.exit(1);
