@@ -44,6 +44,14 @@ body{
     padding: 1rem;
 }
 
+.location-container{
+    height: 70%;
+    width: 100%;
+    word-wrap: break-word;
+    overflow: auto;
+    text-align: center;
+}
+
 .section1{
     height: 100%;
     width: 65%;
@@ -68,6 +76,7 @@ body{
 }
 
 .locs-info{
+
     width: 80%;
     height: 80%;
     position: absolute;
